@@ -1,0 +1,12 @@
+a = int(input('Entre com valor de A:'))
+b = int(input('Entre com valor de B:'))
+c = int(input('Entre com valor de C:'))
+
+if a < b + c and b + a + c and c < b + a:
+    print('Triangulo')
+    print(f'Area do triangulo: {a*b/2} cm2')
+
+else:
+    print(f'Não forma um triângulo, valores:{a},{b},{c}')
+    if a > b + c:
+        print(f'Valor de A é o maior:{a}')
