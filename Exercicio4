@@ -1,0 +1,12 @@
+def primo(numero):
+    for i in range(2, numero):
+        if not numero % i:
+            print(str(numero) + ' Falso')
+            return False
+
+        else:
+            print(str(numero) + ' Primo')
+            return True
+
+for numero in range(0, 101):
+    primo(numero)
