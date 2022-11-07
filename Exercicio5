@@ -1,0 +1,9 @@
+def reverseFrase(frase):
+    listaFrase = frase.split(" ")
+    fraseReverse = ''
+    for palavra in listaFrase:
+        fraseReverse += palavra[::-1] + ' '
+    return fraseReverse
+
+frase = input(str('Digite uma frase: '))
+print(reverseFrase(frase))
