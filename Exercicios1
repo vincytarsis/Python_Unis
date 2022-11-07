@@ -1,0 +1,5 @@
+idade = int(input('Qual sua idade em dias:'))
+ano = idade / 365
+mes = ano * 12
+
+print(f'Idade em anos:{ano:.0f} anos \nIdade em Meses:{mes:.0f} meses\nIdade em Dias:{idade} dias')
