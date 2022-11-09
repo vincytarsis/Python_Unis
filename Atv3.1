@@ -1,0 +1,18 @@
+import PySimpleGUI as sg
+
+sg.theme('SystemDefautForReal')
+
+layout = [ [sg.Text('Nome do Paciente'), sg.InputText()],
+           [sg.Text('Endereço Completo'), sg.InputText()],
+           ]
+
+windows = sg.Window('Cálculo do IMC - Índice de Massa Co ', layout)
+
+while True:
+    event, values = windows.read()
+    if event == sg.WIN_CLOSED or event == 'C':
+        break
+    print('You entered', values[0])
+
+
+windows.close()
