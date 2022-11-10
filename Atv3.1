@@ -2,17 +2,41 @@ import PySimpleGUI as sg
 
 sg.theme('SystemDefautForReal')
 
-layout = [ [sg.Text('Nome do Paciente'), sg.InputText()],
-           [sg.Text('Endereço Completo'), sg.InputText()],
-           ]
+layout = [[sg.Text('Nome do Paciente', size=(13, 1)), sg.InputText()],
+          [sg.Text('Endereço Completo', size=(13, 1)), sg.InputText()],
+          [sg.Text('Altura(cm)', size=(8, 1)), sg.Input(key='altura')],
+          [sg.Text('Peso(Kg)', size=(8, 1)), sg.Input(key='peso')],
+          [sg.Output(size=(25, 5))],
+          [sg.Button('Calcular'), sg.Button('Reiniciar'), sg.Button('Sair')],
+          ]
 
-windows = sg.Window('Cálculo do IMC - Índice de Massa Co ', layout)
+windows = sg.Window('Cálculo do IMC - Índice de Massa Corporal ', layout)
 
 while True:
     event, values = windows.read()
-    if event == sg.WIN_CLOSED or event == 'C':
+    if event == sg.WIN_CLOSED or event == 'Sair':
         break
-    print('You entered', values[0])
+    elif event == 'Calcular':
+        altura = float(values['altura'])
+        peso = float(values['peso'])
 
+        imc = peso / (altura ** 2)
+
+        if imc < 18.5:
+            l_resultado_texto['text'] = 'Abaixo do Peso!'
+
+        elif 18 <= resultado < 25:
+            l_resultado_texto['text'] = 'Peso ideal'
+
+        elif 25 <= resultado < 30:
+            l_resultado_texto['text'] = 'Sobrepeso'
+
+        elif 30 <= resultado < 40:
+            l_resultado_texto['text'] = 'Obesidade'
+
+        else:
+            l_resultado_texto['text'] = 'Obesidade mórbida'
+
+        print(peso, altura)
 
 windows.close()
