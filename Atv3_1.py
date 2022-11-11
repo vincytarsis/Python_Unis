@@ -2,11 +2,11 @@ import PySimpleGUI as sg
 
 sg.theme('dark')
 
-layout = [[sg.Text('Nome do Paciente', size=(15, 1)), sg.InputText()],
-          [sg.Text('Endereço Completo', size=(15, 1)), sg.InputText()],
+layout = [[sg.Text('Nome do Paciente', size=(15, 1)), sg.InputText(key='nome')],
+          [sg.Text('Endereço Completo', size=(15, 1)), sg.InputText(key='endereço')],
           [sg.Text('Altura(cm)', size=(8, 1)), sg.Input(key='altura')],
           [sg.Text('Peso(Kg)', size=(8, 1)), sg.Input(key='peso')],
-          [ sg.Output(key='imc', size=(50, 5))],
+          [sg.Output(key='imc', size=(50, 5))],
           [sg.Button('Calcular'), sg.Button('Reiniciar'), sg.Button('Sair')],
           ]
 
@@ -17,9 +17,12 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Sair':
         break
 
-    '''elif event == 'Reiniciar':
-        altura = ''
-        peso = '''''
+    elif event == 'Reiniciar':
+        for key in values:
+            windows['nome'].update('')
+            windows['endereço'].update('')
+            windows['altura'].update('')
+            windows['peso'].update('')
 
     elif event == 'Calcular':
         altura = float(values['altura'])
@@ -41,7 +44,5 @@ while True:
 
         else:
             print(f'IMC = {imc:.1f}\nObesidade mórbida')
-
-
 
 windows.close()
