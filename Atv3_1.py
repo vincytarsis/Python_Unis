@@ -1,12 +1,12 @@
 import PySimpleGUI as sg
 
-sg.theme('dark')
+sg.theme('Reddit')
 
 layout = [[sg.Text('Nome do Paciente', size=(15, 1)), sg.InputText(key='nome')],
           [sg.Text('Endereço Completo', size=(15, 1)), sg.InputText(key='endereço')],
           [sg.Text('Altura(cm)', size=(8, 1)), sg.Input(key='altura')],
           [sg.Text('Peso(Kg)', size=(8, 1)), sg.Input(key='peso')],
-          [sg.Output(key='imc', size=(50, 5))],
+          [sg.Output(key='imc', size=(55, 5), font=10)],
           [sg.Button('Calcular'), sg.Button('Reiniciar'), sg.Button('Sair')],
           ]
 
@@ -25,6 +25,7 @@ while True:
             windows['peso'].update('')
 
     elif event == 'Calcular':
+
         altura = float(values['altura'])
         peso = float(values['peso'])
 
